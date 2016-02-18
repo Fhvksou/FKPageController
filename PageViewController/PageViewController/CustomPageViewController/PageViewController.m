@@ -165,7 +165,7 @@
         }
     }
 }
-
+//dasdadad
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     for (int i = 200; i < 200+self.vcArr.count; i++) {
