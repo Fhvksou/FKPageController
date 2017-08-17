@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#define ScreenWidth self.view.bounds.size.width
-#define ScreenHeigjt self.view.bounds.size.height
+#import "PageItem.h"
+
 @interface PageViewController : UIViewController
 
+@property (nonatomic ,assign) float numberOfVisiableItems;
+
+@property (nonatomic ,strong) UIColor * colorOfSignView;
+
 - (id)initWithTitleArray:(NSArray *)titleArr andVcArray:(NSArray *)VcArray;
+
+- (instancetype)initWithItems:(NSArray <PageItem *> *)items;
 
 @end

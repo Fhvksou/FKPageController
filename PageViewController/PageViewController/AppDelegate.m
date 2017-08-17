@@ -8,11 +8,9 @@
 
 #import "AppDelegate.h"
 #import "PageViewController.h"
-#import "FirstViewController.h"
-#import "SecondViewController.h"
-#import "ThirdViewController.h"
-#import "FourthViewController.h"
-#import "FifthViewController.h"
+#import "PageItem.h"
+#import "TestViewViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -26,17 +24,44 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    FirstViewController * firstVc = [[FirstViewController alloc]init];
-    SecondViewController * secondVc = [[SecondViewController alloc]init];
-    ThirdViewController * thirdVc = [[ThirdViewController alloc]init];
-    FourthViewController * forthVc = [[FourthViewController alloc]init];
-    FifthViewController * fifthVc = [[FifthViewController alloc]init];
+    NSMutableArray <PageItem *> * items = [NSMutableArray array];
     
-    PageViewController * viewVc = [[PageViewController alloc]initWithTitleArray:@[@"我的社区",@"穿搭秀",@"全球好货",@"欢乐购",@"去求购"] andVcArray:@[firstVc,secondVc,thirdVc,forthVc,fifthVc]];
+    for (NSInteger i = 0; i < 10; i++) {
+        PageItem * item = [[PageItem alloc]init];
+        
+        item.controller = [[TestViewViewController alloc]init];
+        
+        item.selectColor = [UIColor orangeColor];
+        item.normalColor = [UIColor blackColor];
+        item.title = @"全球好货";
+        
+        [items addObject:item];
+    }
+
+//    PageItem * item = [[PageItem alloc]init];
+//    item.controller = [[TestViewViewController alloc]init];
+//    item.controller.view.backgroundColor = [UIColor redColor];
+//    item.selectColor = [UIColor orangeColor];
+//    item.normalColor = [UIColor blackColor];
+//    item.title = @"全球好货";
+//    [items addObject:item];
+//    
+//    PageItem * item2 = [[PageItem alloc]init];
+//    item2.controller = [[TestViewViewController alloc]init];
+//    item2.controller.view.backgroundColor = [UIColor yellowColor];
+//    item2.selectColor = [UIColor orangeColor];
+//    item2.normalColor = [UIColor blackColor];
+//    item2.title = @"全球好货";
+//    [items addObject:item2];
     
-    UINavigationController * na = [[UINavigationController alloc]initWithRootViewController:viewVc];
     
-    self.window.rootViewController = na;
+    PageViewController * pageVc = [[PageViewController alloc]initWithItems:[items copy]];
+    pageVc.numberOfVisiableItems = 3.5;
+    pageVc.colorOfSignView = [UIColor orangeColor];
+    
+    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:pageVc];
+    
+    self.window.rootViewController = nav;
     return YES;
 }
 

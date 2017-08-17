@@ -1,22 +1,23 @@
 //
-//  FirstViewController.m
+//  TestViewViewController.m
 //  PageViewController
 //
-//  Created by fhkvsou on 16/2/18.
-//  Copyright © 2016年 fhkvsou. All rights reserved.
+//  Created by fhkvsou on 17/8/16.
+//  Copyright © 2017年 fhkvsou. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "TestViewViewController.h"
+#define kRandomColor [UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1.0f]
 
-@interface FirstViewController ()
+@interface TestViewViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation TestViewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = kRandomColor;
 }
 
 - (void)didReceiveMemoryWarning {
