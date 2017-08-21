@@ -36,12 +36,9 @@
     return self;
 }
 
-- (void)setColorOfSignView:(UIColor *)colorOfSignView{
-    self.topView.colorOfSignView = colorOfSignView;
-}
-
 - (void)createViews{
     [self.view addSubview:self.topView];
+    self.topView.colorOfSignView = _colorOfSignView;
     
     [self.topView updateWithItems:self.items];
     

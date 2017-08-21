@@ -13,7 +13,7 @@
 #define kScreenHeight self.frame.size.height
 #define kAnimationDuration 0.3
 
-@interface TopTabView ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface TopTabView ()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic ,strong) NSArray <PageItem *>* items;
 
