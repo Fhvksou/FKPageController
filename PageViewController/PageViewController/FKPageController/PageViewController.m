@@ -19,14 +19,14 @@
     
 }
 @property (nonatomic ,strong) UIPageViewController * pageView;
-@property (nonatomic ,strong) NSArray <PageItem *>* items;
+@property (nonatomic ,strong) NSArray <ItemData *>* items;
 @property (nonatomic ,strong) TopTabView * topView;
 
 @end
 
 @implementation PageViewController
 
-- (instancetype)initWithItems:(NSArray <PageItem *> *)items{
+- (instancetype)initWithItems:(NSArray <ItemData *> *)items{
     if (self = [super init]) {
         self.items = items;
         _currentPage = 0;
@@ -38,11 +38,9 @@
 
 - (void)createViews{
     [self.view addSubview:self.topView];
-    self.topView.colorOfSignView = _colorOfSignView;
-    
     [self.topView updateWithItems:self.items];
     
-    PageItem * defaultItem = [_items objectAtIndex:0];
+    ItemData * defaultItem = [_items objectAtIndex:0];
     
     [self.pageView setViewControllers:@[defaultItem.controller] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     [self addChildViewController:self.pageView];
@@ -66,7 +64,7 @@
         return nil;
     }
     
-    PageItem * defaultItem = [_items objectAtIndex:index - 1];
+    ItemData * defaultItem = [_items objectAtIndex:index - 1];
     return defaultItem.controller;
 }
 
@@ -76,7 +74,7 @@
         return nil;
     }
     
-    PageItem * defaultItem = [_items objectAtIndex:index + 1];
+    ItemData * defaultItem = [_items objectAtIndex:index + 1];
     return defaultItem.controller;
 }
 
@@ -89,7 +87,7 @@
 
 - (NSInteger)currentNum:(UIViewController *)controller{
     NSInteger i = 0;
-    for (PageItem * item in self.items) {
+    for (ItemData * item in self.items) {
         if (item.controller == controller) {
             return i;
         }
@@ -101,14 +99,15 @@
 #pragma mark -------------------------------TopTabDelegate---------------------------------
 
 - (void)selectAtIndex:(NSInteger)index{
-    PageItem * defaultItem = [_items objectAtIndex:index];
-    [self.pageView setViewControllers:@[defaultItem.controller] direction:index < _currentPage animated:YES completion:nil];
+    ItemData * defaultItem = [_items objectAtIndex:index];
+    // 动画效果打开，快速切换会引起白屏，可能是系统pageViewController的问题，还没有找到解决办法。
+    [self.pageView setViewControllers:@[defaultItem.controller] direction:index < _currentPage animated:NO completion:nil];
     _currentPage = index;
 }
 
 #pragma mark -------------------------------lazyLoad---------------------------------
 
-- (NSArray<PageItem *> *)items{
+- (NSArray<ItemData *> *)items{
     if (_items == nil) {
         _items = [[NSArray alloc]init];
     }
@@ -128,6 +127,8 @@
 - (TopTabView *)topView{
     if (!_topView) {
         _topView = [[TopTabView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, 50) numberOfVisiableItems:_numberOfVisiableItems];
+        _topView.scrollEnable = NO;
+        self.topView.colorOfSignView = _colorOfSignView;
         _topView.delegate = self;
     }
     return _topView;

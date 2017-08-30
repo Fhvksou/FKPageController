@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7FD7C04D1F429F6400F6E467 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7C04C1F429F6400F6E467 /* PageViewController.m */; };
-		7FD7C0501F42A2CC00F6E467 /* PageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7C04F1F42A2CC00F6E467 /* PageItem.m */; };
+		7FD7C0501F42A2CC00F6E467 /* ItemData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7C04F1F42A2CC00F6E467 /* ItemData.m */; };
 		7FD7C0531F44204800F6E467 /* ItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7C0521F44204800F6E467 /* ItemCollectionViewCell.m */; };
 		7FD7C0561F4439DC00F6E467 /* TopTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7C0551F4439DC00F6E467 /* TopTabView.m */; };
 		7FD7C0591F444FB500F6E467 /* TestViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7C0581F444FB500F6E467 /* TestViewViewController.m */; };
@@ -41,8 +41,8 @@
 /* Begin PBXFileReference section */
 		7FD7C04B1F429F6400F6E467 /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
 		7FD7C04C1F429F6400F6E467 /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
-		7FD7C04E1F42A2CC00F6E467 /* PageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageItem.h; sourceTree = "<group>"; };
-		7FD7C04F1F42A2CC00F6E467 /* PageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageItem.m; sourceTree = "<group>"; };
+		7FD7C04E1F42A2CC00F6E467 /* ItemData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemData.h; sourceTree = "<group>"; };
+		7FD7C04F1F42A2CC00F6E467 /* ItemData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemData.m; sourceTree = "<group>"; };
 		7FD7C0511F44204800F6E467 /* ItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCollectionViewCell.h; sourceTree = "<group>"; };
 		7FD7C0521F44204800F6E467 /* ItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCollectionViewCell.m; sourceTree = "<group>"; };
 		7FD7C0541F4439DC00F6E467 /* TopTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTabView.h; sourceTree = "<group>"; };
@@ -93,8 +93,8 @@
 		7FD7C04A1F429F6400F6E467 /* FKPageController */ = {
 			isa = PBXGroup;
 			children = (
-				7FD7C04E1F42A2CC00F6E467 /* PageItem.h */,
-				7FD7C04F1F42A2CC00F6E467 /* PageItem.m */,
+				7FD7C04E1F42A2CC00F6E467 /* ItemData.h */,
+				7FD7C04F1F42A2CC00F6E467 /* ItemData.m */,
 				7FD7C0541F4439DC00F6E467 /* TopTabView.h */,
 				7FD7C0551F4439DC00F6E467 /* TopTabView.m */,
 				7FD7C04B1F429F6400F6E467 /* PageViewController.h */,
@@ -307,7 +307,7 @@
 				7FD7C0591F444FB500F6E467 /* TestViewViewController.m in Sources */,
 				7FD7C04D1F429F6400F6E467 /* PageViewController.m in Sources */,
 				7FE266091C75632900B58B58 /* main.m in Sources */,
-				7FD7C0501F42A2CC00F6E467 /* PageItem.m in Sources */,
+				7FD7C0501F42A2CC00F6E467 /* ItemData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,8 +6,8 @@
 //  Copyright © 2017年 fhkvsou. All rights reserved.
 //
 
-#import "PageItem.h"
+#import "ItemData.h"
 
-@implementation PageItem
+@implementation ItemData
 
 @end

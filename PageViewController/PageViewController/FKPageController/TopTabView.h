@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PageItem.h"
+#import "ItemData.h"
 
 @protocol TopTabDelegate <NSObject>
 
@@ -27,6 +27,6 @@
 
 - (void)setSelectIndex:(NSInteger)index animation:(BOOL)animation;
 
-- (void)updateWithItems:(NSArray <PageItem *>*)items;
+- (void)updateWithItems:(NSArray <ItemData *>*)items;
 
 @end

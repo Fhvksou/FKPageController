@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PageItem.h"
+#import "ItemData.h"
 
 @interface ItemCollectionViewCell : UICollectionViewCell
 
-- (void)updateText:(PageItem *)data;
+- (void)updateText:(ItemData *)data;
 
 - (void)updataSelet:(BOOL)select;
 

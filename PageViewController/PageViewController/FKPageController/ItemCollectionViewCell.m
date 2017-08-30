@@ -11,7 +11,7 @@
 @interface ItemCollectionViewCell ()
 
 @property (nonatomic ,strong) UILabel * text;
-@property (nonatomic ,strong) PageItem * data;
+@property (nonatomic ,strong) ItemData * data;
 
 @end
 
@@ -36,7 +36,7 @@
     _text.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
 }
 
-- (void)updateText:(PageItem *)data{
+- (void)updateText:(ItemData *)data{
     _data = data;
     _text.text = data.title;
 }

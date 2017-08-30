@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface PageItem : NSObject
+@interface ItemData : NSObject
 
 @property (nonatomic ,strong) UIViewController * controller;
 

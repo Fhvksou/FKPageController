@@ -15,7 +15,7 @@
 
 @interface TopTabView ()<UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate>
 
-@property (nonatomic ,strong) NSArray <PageItem *>* items;
+@property (nonatomic ,strong) NSArray <ItemData *>* items;
 
 @property (nonatomic ,strong) UICollectionView * collectVc;
 @property (nonatomic ,strong) UICollectionViewFlowLayout * layout;
@@ -41,7 +41,7 @@
     return self;
 }
 
-- (void)updateWithItems:(NSArray<PageItem *> *)items{
+- (void)updateWithItems:(NSArray<ItemData *> *)items{
     self.items = items;
     
     [self.collectVc reloadData];
@@ -52,7 +52,7 @@
 }
 
 - (void)setScrollEnable:(BOOL)scrollEnable{
-    self.collectVc.scrollEnabled = YES;
+    self.collectVc.scrollEnabled = scrollEnable;
 }
 
 - (void)setColorOfSignView:(UIColor *)colorOfSignView{
@@ -74,7 +74,6 @@
     UICollectionViewCell * deselectCell = [self.collectVc cellForItemAtIndexPath:deselectIndexPath];
     ItemCollectionViewCell * deselectItem = (ItemCollectionViewCell *)deselectCell;
     [deselectItem updataSelet:NO];
-    
     
     NSIndexPath * selectIndexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectVc selectItemAtIndexPath:selectIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
@@ -106,6 +105,28 @@
     }];
 }
 
+- (void)updataContentOffsetOfItems:(CGRect)rect{
+    CGFloat width = kScreenWidth / _numberOfVisiableItems;
+    CGFloat offset = self.collectVc.contentOffset.x;
+    
+    CGFloat distance = kScreenWidth - (rect.origin.x - offset);
+    
+    NSInteger currentDistance = round(distance);
+    NSInteger currentWidth = round(width);
+    // 待处理   误差问题
+    if (currentDistance < currentWidth) {
+        if (_selectIndex == self.items.count - 1) {
+            [self.collectVc setContentOffset:CGPointMake(self.collectVc.contentSize.width - kScreenWidth, 0) animated:YES];
+        }else{
+            [self.collectVc setContentOffset:CGPointMake(offset + width, 0) animated:YES];
+        }
+    }else if (currentDistance == currentWidth){
+        [self.collectVc setContentOffset:CGPointMake(offset + width / 2, 0) animated:YES];
+    }else if (currentDistance == kScreenWidth){
+        [self.collectVc setContentOffset:CGPointMake(offset - width / 2, 0) animated:YES];
+    }
+}
+
 #pragma mark -----------------------UICollectionViewDelegate-------------------------
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -120,6 +141,7 @@
     
     CGRect cellRect = [collectionView convertRect:cell.frame toView:_collectVc];
     [self changeLocationOfSignView:cellRect];
+    [self updataContentOffsetOfItems:cellRect];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -141,7 +163,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PageItemCell" forIndexPath:indexPath];
     
-    PageItem * data = [_items objectAtIndex:indexPath.item];
+    ItemData * data = [_items objectAtIndex:indexPath.item];
     [cell updateText:data];
     
     if (indexPath.row == _selectIndex) {
@@ -192,7 +214,8 @@
     }
     return _layout;
 }
-- (NSArray<PageItem *> *)items{
+
+- (NSArray<ItemData *> *)items{
     if (_items == nil) {
         _items = [[NSArray alloc]init];
     }

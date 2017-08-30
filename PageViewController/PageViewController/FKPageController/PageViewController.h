@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PageItem.h"
+#import "ItemData.h"
 
 @interface PageViewController : UIViewController
 
@@ -15,8 +15,6 @@
 
 @property (nonatomic ,strong) UIColor * colorOfSignView;
 
-- (id)initWithTitleArray:(NSArray *)titleArr andVcArray:(NSArray *)VcArray;
-
-- (instancetype)initWithItems:(NSArray <PageItem *> *)items;
+- (instancetype)initWithItems:(NSArray <ItemData *> *)items;
 
 @end

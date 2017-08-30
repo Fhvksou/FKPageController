@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PageViewController.h"
-#import "PageItem.h"
+#import "ItemData.h"
 #import "TestViewViewController.h"
 
 @interface AppDelegate ()
@@ -24,10 +24,10 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    NSMutableArray <PageItem *> * items = [NSMutableArray array];
+    NSMutableArray <ItemData *> * items = [NSMutableArray array];
     
-    for (NSInteger i = 0; i < 10; i++) {
-        PageItem * item = [[PageItem alloc]init];
+    for (NSInteger i = 0; i < 100; i++) {
+        ItemData * item = [[ItemData alloc]init];
         
         item.controller = [[TestViewViewController alloc]init];
         
@@ -37,23 +37,6 @@
         
         [items addObject:item];
     }
-
-//    PageItem * item = [[PageItem alloc]init];
-//    item.controller = [[TestViewViewController alloc]init];
-//    item.controller.view.backgroundColor = [UIColor redColor];
-//    item.selectColor = [UIColor orangeColor];
-//    item.normalColor = [UIColor blackColor];
-//    item.title = @"全球好货";
-//    [items addObject:item];
-//    
-//    PageItem * item2 = [[PageItem alloc]init];
-//    item2.controller = [[TestViewViewController alloc]init];
-//    item2.controller.view.backgroundColor = [UIColor yellowColor];
-//    item2.selectColor = [UIColor orangeColor];
-//    item2.normalColor = [UIColor blackColor];
-//    item2.title = @"全球好货";
-//    [items addObject:item2];
-    
     
     PageViewController * pageVc = [[PageViewController alloc]initWithItems:[items copy]];
     pageVc.numberOfVisiableItems = 3.5;
