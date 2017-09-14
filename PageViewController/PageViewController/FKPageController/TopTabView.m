@@ -127,6 +127,14 @@
     }
 }
 
+- (void)changeContentOffset:(CGPoint)point{
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.collectVc setContentOffset:point animated:NO];
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 #pragma mark -----------------------UICollectionViewDelegate-------------------------
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
